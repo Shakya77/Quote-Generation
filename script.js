@@ -60,11 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const randomQuote = quotes[randomIndex];
 
         quoteList.innerHTML = `
-  <div class="quote">
-    <span class="quote-text">"${randomQuote.quote}" - ${randomQuote.author}</span>
-    <button class="copyBtn">Copy Quote</button>
-  </div>
-`;
+            <div class="quote">
+                <span class="quote-text">"${randomQuote.quote}" - ${randomQuote.author}</span>
+                <button class="copyBtn">Copy Quote</button>
+            </div>
+            `;
         addCopyFunctionality();
     });
 
