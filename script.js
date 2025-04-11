@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let quotesHTML = '';
         quotes.forEach(function (q) {
             quotesHTML += `
-    <div class="quote">
+    <div class="quote" style="margin-bottom: 20px;">
       <span class="quote-text">"${q.quote}" - ${q.author}</span>
       <button class="copyBtn">Copy Quote</button>
     </div>
