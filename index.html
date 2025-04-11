@@ -2,15 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Quotes</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+    <div class="container">
+        <div class="" style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Quotes</h1> <a href="/getRandom.html">Random Quote</a>
+        </div>
+        <div class="quote-container" id="quoteList">
+        </div>
+    </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                fetch('https://dummyjson.com/quotes')
+                    .then(res => res.json())
+                    .then(function (data) {
+                        const quotes = data.quotes;
+                        const quoteList = document.getElementById('quoteList');
+
+                        let quotesHTML = '';
+                        quotes.forEach(function (q) {
+                            quotesHTML += `
+                                <div class="quote">
+                                    <span class="quote-text">"${q.quote}" - ${q.author}</span>
+                                    <button class="copyBtn">Copy Quote</button>
+                                </div>
+                            `;
+                        });
+
+                        quoteList.innerHTML = quotesHTML;
+
+                        document.querySelectorAll('.copyBtn').forEach(function (copyBtn, index) {
+                            copyBtn.addEventListener('click', function () {
+                                const quoteText = document.querySelectorAll('.quote-text')[index].textContent.split(' - ')[0].replace(/"/g, '').trim();
+                                navigator.clipboard.writeText(quoteText)
+                                    .then(function () {
+                                        copyBtn.textContent = "Copied!";
+                                        setTimeout(function () {
+                                            copyBtn.textContent = "Copy Quote";
+                                        }, 1500);
+                                    })
+                                    .catch(function (err) {
+                                        console.error('Copy failed:', err);
+                                    });
+                            });
+                        });
+                    })
+                    .catch(function (error) {
+                        console.error('Error fetching or displaying quotes:', error);
+                    });
+            } catch (error) {
+                console.error('An unexpected error occurred:', error);
+            }
+        });
+    </script>
 </body>
 
 </html>
