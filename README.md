@@ -10,10 +10,6 @@ A simple and elegant web application that fetches and displays quotes from a pub
 - Navigate to a random quote page  
 - Responsive and clean UI  
 
-## 🌐 Demo
-
-> You can [preview the app live](#) (if hosted online) or clone it locally and run in your browser.
-
 ## 📁 Project Structure
 
 
