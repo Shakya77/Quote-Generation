@@ -18,7 +18,6 @@ A simple and elegant web application that fetches and displays quotes from a pub
 
 📁 project-root/
 ├── index.html              # Main page with all quotes
-├── getRandom.html          # Random quote page
 ├── styles.css              # Styling for the app
 └── README.md               # Project info
 
